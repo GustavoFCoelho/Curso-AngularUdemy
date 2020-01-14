@@ -6,4 +6,13 @@ import { Component } from '@angular/core';
 })
 export class BodyComponent{
 
+    mostrar:boolean = false;
+
+    frase: any = {
+        mensage: "Com grandes poderes vem grandes responsalidades",
+        autor: "Ben Parker"
+    }
+
+    personagens: string[] = ['Spidermen', 'Venom', 'Dr.Octopus']
+
 }
