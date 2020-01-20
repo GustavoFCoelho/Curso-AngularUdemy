@@ -1,0 +1,22 @@
+<h1>Pesquisa: {{ busca }} <small>Marvel & DC</small></h1>
+
+<div class="row" *ngIf="heroes.length == 0">
+    <div class="col-md-12">
+        <div class="alert alert-warning">
+            Não existe heroi com {{ busca }}
+        </div>
+    </div>
+</div>
+
+<div class="card-columns">
+    <div class="card animated fadeIn" *ngFor="let hero of heroes; let i = index">
+        <img [src]="hero.img" class="card-img-top" [alt]="hero.nombre">
+        <div class="card-body">
+            <h5 class="card-title">{{ hero.nombre }}</h5>
+            <p class="card-text">{{ hero.bio }}</p>
+            <p class="card-text"><small class="text-muted">{{hero.aparicion}}</small></p>
+
+            <button routerLinkActive="router-link-active"  class="btn btn-outline-warning btn-block">Ver más...</button>
+        </div>
+    </div>
+</div>
