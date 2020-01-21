@@ -1,0 +1,122 @@
+<div class="container">
+    <br>
+    <h1>Pipes</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Variavel</th>
+                <th scope="col">Pipe</th>
+                <th scope="col">Retorno</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{nome}}</td>
+                <td>uppercase</td>
+                <td>{{ nome | uppercase }}</td>
+            </tr>
+            <tr>
+                <td>{{nome}}</td>
+                <td>lowercase</td>
+                <td>{{ nome | lowercase }}</td>
+            </tr>
+            <tr>
+                <td>{{nome}}</td>
+                <td>slice:3</td>
+                <td>{{ nome | slice:3 }}</td>
+            </tr>
+            <tr>
+                <td>{{nome}}</td>
+                <td>slice:3:5</td>
+                <td>{{ nome | slice:3:5 }}</td>
+            </tr>
+            <tr>
+                <td>{{array}}</td>
+                <td>slice:3:5</td>
+                <td>{{ array | slice:1:5 }}</td>
+            </tr>
+            <tr>
+                <td>{{PI}}</td>
+                <td> number:"1.0-5"</td>
+                <td>{{ PI | number:"1.0-5" }}</td>
+            </tr>
+            <tr>
+                <td>{{a}}</td>
+                <td>percent</td>
+                <td>{{ a | percent }}</td>
+            </tr>
+            <tr>
+                <td>{{a}}</td>
+                <td>percent:"2.2-2"</td>
+                <td>{{ a | percent:"2.2-2" }}</td>
+            </tr>
+            <tr>
+                <td>{{salario}}</td>
+                <td>currency</td>
+                <td>{{ salario | currency }}</td>
+            </tr>
+            <tr>
+                <td>{{salario}}</td>
+                <td>currency:"BRL"</td>
+                <td>{{ salario | currency:"BRL" }}</td>
+            </tr>
+            <tr>
+                <td>{{salario}}</td>
+                <td>currency:"BRL":false </td>
+                <td>{{ salario | currency:"BRL":false }}</td>
+            </tr>
+            <tr>
+                <td>{{salario}}</td>
+                <td>currency:"BRL":false:"4.0-0" </td>
+                <td>{{ salario | currency:"BRL":false:"4.0-0" }}</td>
+            </tr>
+            <tr>
+                <td>{{salario}}</td>
+                <td> number </td>
+                <td>{{ salario | number:".2-2" }}</td>
+            </tr>
+            <tr>
+                <td>{{valorDePromessa}}</td>
+                <td> async </td>
+                <td>{{ valorDePromessa | async }}</td>
+            </tr>
+            <tr>
+                <td>{{data}}</td>
+                <td> date:'medium' </td>
+                <td>{{ data | date:'medium' }}</td>
+            </tr>
+            <tr>
+                <td>{{data}}</td>
+                <td> date:'MMMM - dd' </td>
+                <td>{{ data | date:'MMMM - dd' }}</td>
+            </tr>
+            <tr>
+                <td>{{nome2}}</td>
+                <td> capitalizado </td>
+                <td>{{ nome2 | capitalizado }}</td>
+            </tr>
+            <tr>
+                <td>{{nome2}}</td>
+                <td> capitalizado </td>
+                <td>{{ nome2 | capitalizado:false }}</td>
+            </tr>
+            <tr>
+                <td>{{nome}}</td>
+                <td>
+                    <p> senha </p>
+                    <button (click)="ativar = !ativar" class="btn btn-outline-danger btn-block">
+                        <p *ngIf="ativar">Desativar</p>
+                        <p *ngIf="!ativar">Ativar</p>
+                    </button>
+                </td>
+                <td>{{ nome | senha:ativar }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h4>JSON</h4>
+    <pre>
+        {{ hero | json}}
+    </pre>
+</div>
