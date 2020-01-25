@@ -1,0 +1,7 @@
+{
+  "name": "WishList",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
