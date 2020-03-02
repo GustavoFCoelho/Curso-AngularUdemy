@@ -6,13 +6,12 @@ export class Lista{
     dataCriacao: Date;
     dataTermino: Date;
     status: boolean;
-    items: ListaItem[];
+    items: ListaItem[] = [];
 
     constructor(titulo:string){
         this.titulo = titulo;
         this.dataCriacao = new Date();
         this.status = false;
-        this.items = [];
 
         this.id = new Date().getTime();
     }

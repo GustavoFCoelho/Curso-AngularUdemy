@@ -5,10 +5,36 @@ import { Lista } from '../models/lista.model';
     providedIn: 'root'
 })
 export class DesejosService {
-
-    listas: Lista[] = []
+	
+    listas: Lista[];
 
     constructor() { 
-        this.listas.push(new Lista("Assistir as longas tranças d um careca!"))
+        this.carregarStorage();
+        if(this.listas === null){
+            this.listas = [];
+        }
     }
+
+    criarLista(Titulo: string) {
+        const novaLista = new Lista(Titulo); 
+        this.listas.push(novaLista);
+        this.guardarStorage();
+        return novaLista.id;
+    }
+
+    obterLista(id:string | number){
+        id = Number(id);
+        return this.listas.find( listaData =>{
+            return listaData.id === id;
+        })
+    }
+    
+    guardarStorage(){
+        localStorage.setItem("Lista", JSON.stringify(this.listas));
+    }
+    
+    carregarStorage(){
+        this.listas = JSON.parse(localStorage.getItem("Lista"));
+    }
+
 }
