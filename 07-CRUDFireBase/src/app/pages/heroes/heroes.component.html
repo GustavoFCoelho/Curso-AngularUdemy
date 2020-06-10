@@ -2,40 +2,51 @@
 <hr>
 
 <div class="row">
-    <div class="col text-right">
-        <button class="btn btn-primary" routerLink="/heroe/nuevo">
-            <i class="fa fa-plus"></i>Agregar
-        </button>
-    </div>
+  <div class="col text-right">
+    <button class="btn btn-primary" routerLink="/heroe/nuevo">
+      <i class="fa fa-plus"></i>Agregar
+    </button>
+  </div>
 </div>
 
-<table class="table mt-3 text-center">
-    <thead class="thead-dark">
-        <tr>
-            <th>#</th>
-            <th>Nome</th>
-            <th>Poder</th>
-            <th>Vivo</th>
-            <th>Ferramentas</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td scope="row">1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
-        </tr>
-    </tbody>
+<table *ngIf="!carregando && heroes.length > 0" class="animated fadeIn faster table mt-3 text-center">
+  <thead class="thead-dark">
+  <tr>
+    <th>#</th>
+    <th>Nome</th>
+    <th>Poder</th>
+    <th>Vivo</th>
+    <th>Ferramentas</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let hero of heroes; let i = index">
+    <td scope="row"> {{ i + 1 }}</td>
+    <td>{{hero.nombre}}</td>
+    <td>{{hero.poder}}</td>
+    <td>
+      <label class="badge badge-success" *ngIf="hero.vivo">Vivo</label>
+      <label class="badge badge-danger" *ngIf="!hero.vivo">Morto</label>
+    </td>
+    <td>
+      <button routerLink="/heroe/{{hero.id}}" class="btn btn-info mr-1">
+        <i class="fa fa-pen"></i>
+      </button>
+      <button class="btn btn-danger mr-1" (click)="thanos(hero.id, i)">
+        <i class="fa fa-trash"></i>
+      </button>
+
+    </td>
+  </tr>
+  </tbody>
 </table>
 
-<div class="alert alert-warning text-center mt-3">
-    <h4 class="alert-heading">Sem registros</h4>
-    <p><i class="fa fa-exclamation fa-2x"></i></p>
+<div *ngIf="!carregando && heroes.length === 0" class="animated fadeIn faster alert alert-warning text-center mt-3">
+  <h4 class="alert-heading">Sem registros</h4>
+  <p><i class="fa fa-exclamation fa-2x"></i></p>
 </div>
-<div class="alert alert-info text-center mt-3">
-    <h4 class="alert-heading">Carregando</h4>
-    <p><i class="fa fa-sync-alt fa-spin fa-2x"></i></p>
-    <p class="mb-0">Espere Por Favor</p>
+<div *ngIf="carregando" class="animated fadeIn faster alert alert-info text-center mt-3">
+  <h4 class="alert-heading">Carregando</h4>
+  <p><i class="fa fa-sync-alt fa-spin fa-2x"></i></p>
+  <p class="mb-0">Espere Por Favor</p>
 </div>
