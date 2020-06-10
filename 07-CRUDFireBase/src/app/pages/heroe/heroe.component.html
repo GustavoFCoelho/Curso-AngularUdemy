@@ -11,26 +11,26 @@
 
 <div class="row animated fadeIn faster">
     <div class="col">
-        <form>
+        <form (ngSubmit)="guardar(f)" #f="ngForm">
             <div class="form-group">
                 <label>FireBase ID</label>
-                <input type="text" placeholder="Firebase ID" disabled class="form-control">
+                <input type="text" placeholder="Firebase ID" name="id" [(ngModel)]="hero.id" disabled class="form-control">
             </div>
             <div class="form-group">
                 <label>Nome</label>
-                <input required type="text" placeholder="Nome do heroi" class="form-control">
+                <input required type="text" placeholder="Nome do heroi" [(ngModel)]="hero.nombre" name="nombre"  class="form-control">
             </div>
             <div class="form-group">
                 <label>Poder</label>
-                <input required type="text" placeholder="Poder do heroi" class="form-control">
+                <input required type="text" placeholder="Poder do heroi" class="form-control" [(ngModel)]="hero.poder" name="poder">
             </div>
             <div class="form-group">
                 <label>Estado</label>
                 <br>
-                <button class="btn btn-outline-success w-50">
+                <button *ngIf="hero.vivo" (click)="hero.vivo = false" class="btn btn-outline-success w-50">
                     <i class="fa fa-smile-wink"></i> Vivo
                 </button>
-                <button class="btn btn-outline-danger w-50">
+                <button *ngIf="!hero.vivo" (click)="hero.vivo = true" class="btn btn-outline-danger w-50">
                     <i class="fa fa-dizzy"></i> Morte
                 </button>
             </div>

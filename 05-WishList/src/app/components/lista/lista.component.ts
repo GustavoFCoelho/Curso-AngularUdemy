@@ -9,8 +9,9 @@ import {AlertController, IonList} from '@ionic/angular';
     templateUrl: './lista.component.html',
     styleUrls: ['./lista.component.scss'],
 })
-export class ListaComponent implements OnInit {
+export class ListaComponent implements OnInit {K
 
+    // @ts-ignore
     @ViewChild( IonList ) ionList: IonList;
     @Input() terminados = true;
 
